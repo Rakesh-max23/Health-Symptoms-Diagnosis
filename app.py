@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 model = pickle.load(open("model/model.pkl", "rb"))
 
-genai.configure(api_key="AIzaSyBKD8e0VmjjNYdl7GZAcZbU3pQ1-TV_kSw") 
+genai.configure(api_key="") 
 
 db = mysql.connector.connect(
     host="localhost",
