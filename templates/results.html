@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet", href="{{url_for('static', filename='css/results.css')}}">
+  
+</head>
+<body>
+  <div class="container">
+
+    <div class="result-card">
+      <h1>🩺 Health Symptom Checker</h1>
+      <h2 class="title">✅ Prediction Result</h2>
+      <p class="prediction">Possible Condition: <span>{{ disease }}</span></p>
+
+      <h3>Your Symptoms:</h3>
+      <div class="symptom-tags">
+        {% for s in symptoms %}
+          <span class="tag">{{ s.replace('_', ' ').title() }}</span>
+        {% endfor %}
+      </div>
+      <a href="/" type="submit" class="btn">🔙 Check Again</a>
+    </div>
+
+    <div class="chatbot">
+      <h2>💡 Rocky AI Medical Assistant</h2>
+      <div id="chat-box"></div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Ask for advice..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+      <a href="/history" class="history-btn">📜 View History</a>
+    </div>
+  </div>
+
+  <script src="{{url_for('static', filename='js/results.js')}}"></script>
+</body>
+</html>
+

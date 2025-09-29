@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Health Symptom Checker</title>
+  <link rel="stylesheet", href="{{url_for('static', filename='css/index.css')}}">
+  
+</head>
+<body>
+  <div class="container">
+    <h1>🩺 Health Symptom Checker</h1>
+
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Search symptoms...">
+    </div>
+
+    <form action="/predict" method="POST">
+      <div class="symptom-list" id="symptom-list">
+        {% for s in symptoms %}
+          <label class="symptom-item">
+            <input type="checkbox" name="symptoms" value="{{ s }}"> {{ s.replace('_', ' ').title() }}
+          </label>
+        {% endfor %}
+      </div>
+
+      <button type="submit">Predict Disease</button>
+    </form>
+    <a href="/history" class="history-btn">📜 View History</a>
+  </div>
+
+  <div id="chatbot-container">
+    <div class="chatbot">
+      <h2>💡 Rocky AI Assistant</h2>
+      <div id="chat-box"></div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Ask for advice..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+  <button id="chatbot-toggle">🤖</button>
+
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+</body>
+</html>

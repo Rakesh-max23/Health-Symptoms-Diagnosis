@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>History</title>
+  <link rel="stylesheet", href="{{url_for('static', filename='css/history.css')}}">
+</head>
+<body>
+  <h1>📜 Prediction History</h1>
+  <table>
+    <tr>
+      <th></th>
+      <th>Symptoms</th>
+      <th>Predicted Disease</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+    {% for row in records %}
+    <tr>
+      <td>➡️</td>
+      <td>{{ row[1] }}</td> 
+      <td>{{ row[2] }}</td> 
+      <td>{{ row[3] }}</td> 
+      <td><a href="/delete_history/{{ row[0] }}" class="btn">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class = "home-btn-div">
+    <a href="/" type="submit" class="home-btn">🔙 Back to Home</a>
+  </div>
+
+  <div id="chatbot-container">
+    <div class="chatbot">
+      <h2> 💡 Rocky AI Assistant</h2>
+      <div id="chat-box"></div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Ask for advice..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+  <button id="chatbot-toggle">🤖</button>
+
+  <script src="{{url_for('static', filename='js/history.js')}}"></script>
+</body>
+</html>
